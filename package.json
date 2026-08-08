@@ -2,16 +2,19 @@
   "name": "stayhealthy-frontend",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api": "node server.js"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "express": "latest"
   },
   "devDependencies": {}
 }
