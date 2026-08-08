@@ -5,7 +5,7 @@ app.use(express.json());
 
 const users = new Map();
 
-app.post('/api/register', (req, res) => {
+app.post('/api/auth/register', (req, res) => {
   const { role = 'patient', name, email, phone, password } = req.body || {};
   if (!name || !email || !phone || !password) {
     return res.status(400).json({ success: false, message: 'Missing required fields' });
@@ -19,7 +19,7 @@ app.post('/api/register', (req, res) => {
   });
 });
 
-app.post('/api/login', (req, res) => {
+app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body || {};
   const user = users.get(email);
 
@@ -27,10 +27,10 @@ app.post('/api/login', (req, res) => {
     return res.status(401).json({ success: false, message: 'Invalid email or password' });
   }
 
-  return res.json({
+  return res.status(200).json({
     success: true,
     message: 'Login successful',
-    token: 'stayhealthy-demo-token',
+    authtoken: 'stayhealthy-demo-authtoken-2026',
     user: { name: user.name, email: user.email, role: user.role }
   });
 });
